@@ -2,7 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var urlValue = window.location.href;
-$('#homebutton').attr('href',urlValue);
+$('#refresh').attr('href',urlValue);
 
 var today = dayjs();
 $('#currentDay').text(today.format('MMM D, YYYY'));

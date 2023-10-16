@@ -1,20 +1,31 @@
 var today = dayjs();
-$('#currentDay').text(today.format('D MMMM YYYY'));
+$('#currentDay').text(today.format('dddd, D MMMM YYYY'));
 
 function timecolor() {
-var date = today;
-var hour = date.getHours();
-$('#currentHour').today.format('hh:mm:ss');
-var timeblock = document.getElementById('currentHour');
+  var currenttime = moment().hour();
 
+  
+  $(".time-block").each(function () {
+      var blockTime = parseInt($(this).attr("id").split("hour")[1]);
 
-if (hour >= 9 && hour <= 17) {
-  timeblock.style = 'present';
-} else if (hour < 17) {
-  timeblock.style = 'past';
-} else {
-  timeblock.style = 'future';
-}
+     
+      if (blockTime === currenttime) {
+          $(this).removeClass("past");
+          $(this).removeClass("future");
+          $(this).addClass("present");
+      }
+      else if (blockTime < currenttime) {
+          $(this).removeClass("future");
+          $(this).removeClass("present");
+          $(this).addClass("past");
+      }
+      else {
+          $(this).removeClass("present");
+          $(this).removeClass("past");
+          $(this).addClass("future");
+
+      }
+  })
 }
 
 function saveInput9(){     
